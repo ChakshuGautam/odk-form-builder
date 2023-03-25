@@ -1,1 +1,168 @@
-blah
+import React, { useMemo } from "react"
+import { createForm } from "@formily/core"
+import { createSchemaField } from "@formily/react"
+import {
+  Form,
+  FormItem,
+  DatePicker,
+  Checkbox,
+  Cascader,
+  Editable,
+  Input,
+  NumberPicker,
+  Switch,
+  Password,
+  PreviewText,
+  Radio,
+  Reset,
+  Select,
+  Space,
+  Submit,
+  TimePicker,
+  Transfer,
+  TreeSelect,
+  Upload,
+  FormGrid,
+  FormLayout,
+  FormTab,
+  FormCollapse,
+  ArrayTable,
+  ArrayCards,
+} from "@formily/next"
+import { Card, Range, Rating } from "@alifd/next"
+
+const Text: React.FC<{
+  value?: string
+  content?: string
+  mode?: "normal" | "h1" | "h2" | "h3" | "p"
+}> = ({ value, mode, content, ...props }) => {
+  const tagName = mode === "normal" || !mode ? "div" : mode
+  return React.createElement(tagName, props, value || content)
+}
+
+const SchemaField = createSchemaField({
+  components: {
+    Space,
+    FormGrid,
+    FormLayout,
+    FormTab,
+    FormCollapse,
+    ArrayTable,
+    ArrayCards,
+    FormItem,
+    DatePicker,
+    Checkbox,
+    Cascader,
+    Editable,
+    Input,
+    Text,
+    NumberPicker,
+    Switch,
+    Password,
+    PreviewText,
+    Radio,
+    Reset,
+    Select,
+    Submit,
+    TimePicker,
+    Transfer,
+    TreeSelect,
+    Upload,
+    Card,
+    Range,
+    Rating,
+  },
+})
+
+export default () => {
+  const form = useMemo(() => createForm(), [])
+
+  return (
+    <Form form={form} labelCol={6} wrapperCol={12}>
+      <SchemaField>
+        <SchemaField.String x-component="Text" x-index={0} name={undefined} />
+        <SchemaField.Void
+          x-component="Card"
+          x-component-props={{ title: "Preferences" }}
+          x-index={1}
+          name={undefined}
+        >
+          <SchemaField.Markup
+            title="Preferences"
+            x-decorator="FormItem"
+            x-component="Select"
+            x-validator={[]}
+            name="preferences"
+            description="Please select the number corresponding to the option you want to proceed ahead with.
+"
+            required={true}
+            enum={[
+              { children: [], "1 Leave Balance": "Item 1" },
+              { children: [], "2 Leave Application": "Item 2" },
+              { children: [], "3 Org Resources": "Item 3" },
+            ]}
+            x-index={0}
+          />
+        </SchemaField.Void>
+        <SchemaField.Void
+          x-component="Card"
+          x-component-props={{ title: "Leave Balance Group" }}
+          x-index={2}
+          name="eof_leave_balance_note"
+        >
+          <SchemaField.String x-component="Text" x-index={0} name={undefined} />
+        </SchemaField.Void>
+        <SchemaField.Void
+          x-component="Card"
+          x-component-props={{ title: "Title" }}
+          name="leave_app"
+          x-index={3}
+        >
+          <SchemaField.Markup
+            title="Select type of leave"
+            x-decorator="FormItem"
+            x-component="TreeSelect"
+            x-validator={[]}
+            name="type_of_leave"
+            x-index={0}
+          />
+          <SchemaField.String
+            title="Tell us the reason for your leave"
+            x-decorator="FormItem"
+            x-component="Input"
+            x-validator={[]}
+            name="reason"
+            description=""
+            x-index={1}
+          />
+          <SchemaField.Markup
+            title="Start Date"
+            x-decorator="FormItem"
+            x-component="DatePicker.RangePicker"
+            x-validator={[]}
+            name="start_date_leave"
+            x-index={2}
+          />
+          <SchemaField.String
+            title="End Date"
+            x-decorator="FormItem"
+            x-component="DatePicker"
+            x-validator={[]}
+            name="end_date_leave"
+            x-index={3}
+          />
+          <SchemaField.String
+            title="Please enter the number of working days"
+            x-decorator="FormItem"
+            x-component="Input"
+            x-validator="integer"
+            name="number_of_working_days"
+            x-index={4}
+          />
+        </SchemaField.Void>
+        <SchemaField.String x-component="Text" x-index={4} name={undefined} />
+      </SchemaField>
+    </Form>
+  )
+}
+
