@@ -77,3 +77,8 @@ Learn more about the power of Turborepo:
 - [Designable Playground by alibaba](https://designable-antd.formilyjs.org/)
 - [XLSX Spec](https://xlsform.org/en/)
 - [Original designable playground repo by alibaba](https://github.com/alibaba/designable)
+
+## Advantage of the Project
+= A user will be able to generate an form using an interactive builder
+- User will be able to generate an XLS file and XML for the form
+- User will be able to import and edit already created XLS and XML files 
