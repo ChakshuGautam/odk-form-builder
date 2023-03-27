@@ -1,168 +1,155 @@
-import React, { useMemo } from "react"
-import { createForm } from "@formily/core"
-import { createSchemaField } from "@formily/react"
-import {
-  Form,
-  FormItem,
-  DatePicker,
-  Checkbox,
-  Cascader,
-  Editable,
-  Input,
-  NumberPicker,
-  Switch,
-  Password,
-  PreviewText,
-  Radio,
-  Reset,
-  Select,
-  Space,
-  Submit,
-  TimePicker,
-  Transfer,
-  TreeSelect,
-  Upload,
-  FormGrid,
-  FormLayout,
-  FormTab,
-  FormCollapse,
-  ArrayTable,
-  ArrayCards,
-} from "@formily/next"
-import { Card, Range, Rating } from "@alifd/next"
-
-const Text: React.FC<{
-  value?: string
-  content?: string
-  mode?: "normal" | "h1" | "h2" | "h3" | "p"
-}> = ({ value, mode, content, ...props }) => {
-  const tagName = mode === "normal" || !mode ? "div" : mode
-  return React.createElement(tagName, props, value || content)
-}
-
-const SchemaField = createSchemaField({
-  components: {
-    Space,
-    FormGrid,
-    FormLayout,
-    FormTab,
-    FormCollapse,
-    ArrayTable,
-    ArrayCards,
-    FormItem,
-    DatePicker,
-    Checkbox,
-    Cascader,
-    Editable,
-    Input,
-    Text,
-    NumberPicker,
-    Switch,
-    Password,
-    PreviewText,
-    Radio,
-    Reset,
-    Select,
-    Submit,
-    TimePicker,
-    Transfer,
-    TreeSelect,
-    Upload,
-    Card,
-    Range,
-    Rating,
+{
+  "form": {
+    "labelCol": 6,
+    "wrapperCol": 12
   },
-})
-
-export default () => {
-  const form = useMemo(() => createForm(), [])
-
-  return (
-    <Form form={form} labelCol={6} wrapperCol={12}>
-      <SchemaField>
-        <SchemaField.String x-component="Text" x-index={0} name={undefined} />
-        <SchemaField.Void
-          x-component="Card"
-          x-component-props={{ title: "Preferences" }}
-          x-index={1}
-          name={undefined}
-        >
-          <SchemaField.Markup
-            title="Preferences"
-            x-decorator="FormItem"
-            x-component="Select"
-            x-validator={[]}
-            name="preferences"
-            description="Please select the number corresponding to the option you want to proceed ahead with.
-"
-            required={true}
-            enum={[
-              { children: [], "1 Leave Balance": "Item 1" },
-              { children: [], "2 Leave Application": "Item 2" },
-              { children: [], "3 Org Resources": "Item 3" },
-            ]}
-            x-index={0}
-          />
-        </SchemaField.Void>
-        <SchemaField.Void
-          x-component="Card"
-          x-component-props={{ title: "Leave Balance Group" }}
-          x-index={2}
-          name="eof_leave_balance_note"
-        >
-          <SchemaField.String x-component="Text" x-index={0} name={undefined} />
-        </SchemaField.Void>
-        <SchemaField.Void
-          x-component="Card"
-          x-component-props={{ title: "Title" }}
-          name="leave_app"
-          x-index={3}
-        >
-          <SchemaField.Markup
-            title="Select type of leave"
-            x-decorator="FormItem"
-            x-component="TreeSelect"
-            x-validator={[]}
-            name="type_of_leave"
-            x-index={0}
-          />
-          <SchemaField.String
-            title="Tell us the reason for your leave"
-            x-decorator="FormItem"
-            x-component="Input"
-            x-validator={[]}
-            name="reason"
-            description=""
-            x-index={1}
-          />
-          <SchemaField.Markup
-            title="Start Date"
-            x-decorator="FormItem"
-            x-component="DatePicker.RangePicker"
-            x-validator={[]}
-            name="start_date_leave"
-            x-index={2}
-          />
-          <SchemaField.String
-            title="End Date"
-            x-decorator="FormItem"
-            x-component="DatePicker"
-            x-validator={[]}
-            name="end_date_leave"
-            x-index={3}
-          />
-          <SchemaField.String
-            title="Please enter the number of working days"
-            x-decorator="FormItem"
-            x-component="Input"
-            x-validator="integer"
-            name="number_of_working_days"
-            x-index={4}
-          />
-        </SchemaField.Void>
-        <SchemaField.String x-component="Text" x-index={4} name={undefined} />
-      </SchemaField>
-    </Form>
-  )
+  "schema": {
+    "type": "object",
+    "properties": {
+      "5b2dyjtj5h7": {
+        "type": "string",
+        "x-component": "Text",
+        "x-component-props": {},
+        "x-designable-id": "5b2dyjtj5h7",
+        "x-index": 0
+      },
+      "xfwvvm8hkp9": {
+        "type": "void",
+        "x-component": "Card",
+        "x-component-props": {
+          "title": "Preferences"
+        },
+        "x-designable-id": "xfwvvm8hkp9",
+        "x-index": 1,
+        "properties": {
+          "preferences": {
+            "title": "Preferences",
+            "x-decorator": "FormItem",
+            "x-component": "Select",
+            "x-validator": [],
+            "x-component-props": {},
+            "x-decorator-props": {},
+            "name": "preferences",
+            "description": "Please select the number corresponding to the option you want to proceed ahead with.\n",
+            "required": true,
+            "enum": [
+              {
+                "children": [],
+                "1 Leave Balance": "Item 1"
+              },
+              {
+                "children": [],
+                "2 Leave Application": "Item 2"
+              },
+              {
+                "children": [],
+                "3 Org Resources": "Item 3"
+              }
+            ],
+            "x-designable-id": "7ngxpyfcypq",
+            "x-index": 0
+          }
+        }
+      },
+      "eof_leave_balance_note": {
+        "type": "void",
+        "x-component": "Card",
+        "x-component-props": {
+          "title": "Leave Balance Group"
+        },
+        "x-designable-id": "qfnu3o4f0y1",
+        "x-index": 2,
+        "name": "eof_leave_balance_note",
+        "properties": {
+          "ab9q4hk6kv2": {
+            "type": "string",
+            "x-component": "Text",
+            "x-component-props": {},
+            "x-designable-id": "ab9q4hk6kv2",
+            "x-index": 0
+          }
+        }
+      },
+      "leave_app": {
+        "type": "void",
+        "x-component": "Card",
+        "x-component-props": {
+          "title": "Title"
+        },
+        "name": "leave_app",
+        "x-designable-id": "t4l203kducs",
+        "x-index": 3,
+        "properties": {
+          "type_of_leave": {
+            "title": "Select type of leave",
+            "x-decorator": "FormItem",
+            "x-component": "TreeSelect",
+            "x-validator": [],
+            "x-component-props": {},
+            "x-decorator-props": {},
+            "name": "type_of_leave",
+            "x-designable-id": "zpsahds0cp4",
+            "x-index": 0
+          },
+          "reason": {
+            "type": "string",
+            "title": "Tell us the reason for your leave",
+            "x-decorator": "FormItem",
+            "x-component": "Input",
+            "x-validator": [],
+            "x-component-props": {},
+            "x-decorator-props": {},
+            "name": "reason",
+            "description": "",
+            "x-designable-id": "s3vs4n5y8ut",
+            "x-index": 1
+          },
+          "start_date_leave": {
+            "type": "string[]",
+            "title": "Start Date",
+            "x-decorator": "FormItem",
+            "x-component": "DatePicker.RangePicker",
+            "x-validator": [],
+            "x-component-props": {},
+            "x-decorator-props": {},
+            "name": "start_date_leave",
+            "x-designable-id": "k4ny3ebvef9",
+            "x-index": 2
+          },
+          "end_date_leave": {
+            "type": "string",
+            "title": "End Date",
+            "x-decorator": "FormItem",
+            "x-component": "DatePicker",
+            "x-validator": [],
+            "x-component-props": {},
+            "x-decorator-props": {},
+            "name": "end_date_leave",
+            "x-designable-id": "s13c33fj8kt",
+            "x-index": 3
+          },
+          "number_of_working_days": {
+            "type": "string",
+            "title": "Please enter the number of working days",
+            "x-decorator": "FormItem",
+            "x-component": "Input",
+            "x-validator": "integer",
+            "x-component-props": {},
+            "x-decorator-props": {},
+            "name": "number_of_working_days",
+            "x-designable-id": "og62q6xpefy",
+            "x-index": 4
+          }
+        }
+      },
+      "6hj2vr5om6n": {
+        "type": "string",
+        "x-component": "Text",
+        "x-component-props": {},
+        "x-designable-id": "6hj2vr5om6n",
+        "x-index": 4
+      }
+    },
+    "x-designable-id": "m7kjpqlnjr9"
+  }
 }
-
