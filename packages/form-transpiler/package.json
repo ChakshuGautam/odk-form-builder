@@ -51,5 +51,8 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.5.0",
     "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
   }
 }

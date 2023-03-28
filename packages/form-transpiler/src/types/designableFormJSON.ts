@@ -1,0 +1,26 @@
+export type DesignableFormJSON = {
+  "form": {
+    "labelCol": number,
+    "wrapperCol": number
+  },
+  "schema": {
+    "type": "object",
+    "properties": {
+      "Name": {
+        "type": "string",
+        "title": "Name",
+        "x-decorator": "FormItem",
+        "x-component": "Input",
+        "x-validator": [],
+        "x-component-props": {},
+        "x-decorator-props": {},
+        "name": "Name",
+        "description": "Enter your name here",
+        "default": "John Doe",
+        "x-designable-id": "2f89albku3m",
+        "x-index": 0
+      }
+    },
+    "x-designable-id": "geafoyenkva"
+  }
+}
