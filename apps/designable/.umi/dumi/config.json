@@ -1,0 +1,29 @@
+{
+  "menus": {
+    "en-US": {
+      "*": [
+        {
+          "path": "/",
+          "title": "Introduction",
+          "meta": {
+            "order": null
+          }
+        }
+      ]
+    }
+  },
+  "locales": [
+    {
+      "name": "en-US",
+      "label": "English"
+    }
+  ],
+  "navs": {},
+  "title": "root",
+  "mode": "doc",
+  "repository": {
+    "url": "https://github.com/alibaba/designable",
+    "branch": "master"
+  },
+  "theme": {}
+}

@@ -45,6 +45,10 @@ const handleCardProperties = (formProperty: any, key: string) => {
       break;
     case 'DatePicker':
       rows.push(['date', formProperty["x-designable-id"], formProperty["description"] ?? formProperty["name"], formProperty["required"] ? "yes" : "no"])
+      break;
+    case "NumberPicker":
+      rows.push(['integer', formProperty["x-designable-id"], formProperty["description"] ?? formProperty["name"], formProperty["required"] ? "yes" : "no"])
+      break;
 
   }
 }
@@ -66,4 +70,23 @@ export const jsonToXLSX = (json: any) => {
   XLSX.utils.book_append_sheet(wb, survey, 'survey');
   XLSX.utils.book_append_sheet(wb, choices, 'choices');
   XLSX.writeFile(wb, `test-${Date.now()}.xlsx`);
+}
+
+export const playgrondUtility = (json: any) => {
+  const wb = XLSX.utils.book_new();
+
+  const formProperties: any[] = json.schema.properties as any[];
+  for (const key in formProperties)
+    handleCardProperties(formProperties[key], key);
+
+  console.log('rows: ', rows);
+  console.log('choicesRows: ', choicesRows);
+
+  // create the sheet and write it to 
+  const survey = XLSX.utils.aoa_to_sheet(rows);
+  const choices = XLSX.utils.aoa_to_sheet(choicesRows);
+  XLSX.utils.book_append_sheet(wb, survey, 'survey');
+  XLSX.utils.book_append_sheet(wb, choices, 'choices');
+  // XLSX.writeFile(wb, `test-${Date.now()}.xlsx`);
+  return { survey: XLSX.utils.sheet_to_json(survey), choices: XLSX.utils.sheet_to_json(choices), excelBuffer: XLSX.write(wb, { bookType: 'xlsx', type: 'array' }) }
 }
